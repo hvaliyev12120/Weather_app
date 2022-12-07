@@ -11,6 +11,8 @@ const pressure = document.querySelector(".press");
 const windSpeed = document.querySelector(".wind");
 const wind_degree = document.querySelector(".wind_degree");
 
+const time = document.querySelector(".date");
+
 
 var search_button = document.querySelector(".searching");
 var search_input = document.querySelector(".just_search");
@@ -21,9 +23,30 @@ const takeUserInput = function () {
         if (city.trim() === "") {
         alert("Error: City name cannot be empty!")
     }
+
+    const cord_value = search_input.value;
+    splitted_cord_value = cord_value.split(" ");
+    // console.log(splitted_cord_value);
+    cordFunc(splitted_cord_value[0], splitted_cord_value[1]);
+
     getCityCurrentWeather(city);
 }
 
+
+function cordFunc(lat, lon){
+    const api_url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=df5de19c3287d39aeec080efba00bb10"
+    fetch(api_url)
+        .then(response => {
+            const responseFromApi = response.json();
+            return responseFromApi;
+        })
+        .then(responseFromApi => {
+            getCityCurrentWeather(responseFromApi.name)
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
 
 const getCityCurrentWeather = function (city) {
 
@@ -32,9 +55,6 @@ const getCityCurrentWeather = function (city) {
 
     fetch(api_url)
         .then(response => {
-            if(!response.ok) {
-                alert("Error: Check out your input!!!");
-            }
             const responseFromApi = response.json();
             return responseFromApi;
         })
@@ -54,6 +74,9 @@ const getCityCurrentWeather = function (city) {
 const WeatherResult = function(responseFromApi) {
     city.innerHTML = "City: " + responseFromApi.name;
     country.innerHTML = "Country: " + responseFromApi.sys.country;
+    let timeData = responseFromApi.dt;
+    date = new Date(timeData * 1000);
+    time.innerHTML = "Date: " + date;
     condition.innerHTML = "Condition: " + responseFromApi.weather[0].main;
     description.innerHTML = "Description: " + responseFromApi.weather[0].description;
     temperature.innerHTML = "Temp: " + Math.round(responseFromApi.main.temp) + " °C";
@@ -63,12 +86,12 @@ const WeatherResult = function(responseFromApi) {
     humidity.innerText = "Humidity: " + responseFromApi.main.humidity + "%";
     pressure.innerHTML = "Pressure: " + responseFromApi.main.pressure + " P ";
     windSpeed.innerHTML = "Wind speed: " + responseFromApi.wind.speed + " km/h";
-    wind_degree.innerHTML = "Degree: " + responseFromApi.wind.deg +  "° " + windDir(wind_deg);  //not working, I don't know why?
-    
+    wind_degree.innerHTML = "Degree: " + responseFromApi.wind.deg +  "° (" + direction_of_wind(responseFromApi.wind.deg) + ")";  //not working, I don't know why?
 
-    function windDir(wind_deg) {                   
-        const dirs = ['North', 'North-East', 'East', 'South-East', 'South', 'South-West', 'West', 'North-West'];
-        return dirs[Math.round(wind_deg / 45) % 8];     
-      }
-
+    function direction_of_wind(num){
+        var val = Math.floor((num / 22.5) + 0.5);
+        var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        direction = arr[(val % 16)];
+        return direction;
+    }
 }

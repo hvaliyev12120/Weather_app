@@ -10,7 +10,6 @@ const humidity = document.querySelector(".hum");
 const pressure = document.querySelector(".press");
 const windSpeed = document.querySelector(".wind");
 const wind_degree = document.querySelector(".wind_degree");
-
 const time = document.querySelector(".date");
 
 
@@ -87,6 +86,7 @@ const WeatherResult = function(responseFromApi) {
     windSpeed.innerHTML = "Wind speed: " + responseFromApi.wind.speed + " km/h";
     wind_degree.innerHTML = "Degree: " + responseFromApi.wind.deg +  "° (" + direction_of_wind(responseFromApi.wind.deg) + ")"; 
 
+    
     function direction_of_wind(num){
         var val = Math.floor((num / 22.5) + 0.5);
         var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];

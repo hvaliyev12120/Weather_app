@@ -1,6 +1,6 @@
 function getWeather() {
-  const time = document.querySelector(".date");
 
+  const time = document.querySelector(".date");
   const location = document.querySelector(".nameofcity");
   const country = document.querySelector(".country");
   const condition = document.querySelector(".weather_condition");

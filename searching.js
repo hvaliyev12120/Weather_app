@@ -86,7 +86,7 @@ const WeatherResult = function(responseFromApi) {
     humidity.innerText = "Humidity: " + responseFromApi.main.humidity + "%";
     pressure.innerHTML = "Pressure: " + responseFromApi.main.pressure + " P ";
     windSpeed.innerHTML = "Wind speed: " + responseFromApi.wind.speed + " km/h";
-    wind_degree.innerHTML = "Degree: " + responseFromApi.wind.deg +  "° (" + direction_of_wind(responseFromApi.wind.deg) + ")";  //not working, I don't know why?
+    wind_degree.innerHTML = "Degree: " + responseFromApi.wind.deg +  "° (" + direction_of_wind(responseFromApi.wind.deg) + ")"; 
 
     function direction_of_wind(num){
         var val = Math.floor((num / 22.5) + 0.5);

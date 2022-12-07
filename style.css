@@ -6,7 +6,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50em;
+  height: 765px;
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
@@ -15,21 +15,18 @@ body{
 .Container{
   background: #000000d0;
   opacity: 0.9;
-  max-width: 750px;
+  max-width: 650px;
+  max-height: 650px;
   color: white;
   padding: 50px;
   text-align: center;
   border-radius: 100px;
-  width: 100%;
+  width: 550px;
 }
 
 ul{
 padding: 0;
 margin: 0;
-overflow: hidden;
-background-color: #333;
-border-radius: 10px;
-list-style-type: none;
 }
 
 li{
@@ -41,9 +38,9 @@ li a{
 display: block;
 color: white;
 text-align: center;
-padding: 14px 16px;
+padding: 14px;
 text-decoration: none;
-border-radius: 10px;
+border-radius: 3px;
 }
 
 li  a:hover {
@@ -55,21 +52,17 @@ background-color: #9c1c1c;
 
 .current_location{
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 500;
+  font-weight: 100px;
   background-color: #9c1c1c;
-  border-radius: 3px;
 }
 
 .just_search {
-  border-radius: 24px;
+  border-radius: 13px;
   background: #ffffff;
-  color: rgb(0, 0, 0);
-  font-family: inherit;
-  padding: 0.4em 1em;
-  border: none;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 10px 50px;
   outline: none;
-  width: 15em;
-
+  border: none;
 }
 
 button:hover {
@@ -78,10 +71,10 @@ button:hover {
 }
 
 button {
-  margin: 1em;
-  border-radius: 25%;
-  height: 2.7em;
-  width: 5em;
+  margin: 10px;
+  border-radius: 35%;
+  height: 35px;
+  width: 70px;
   border: none;
 }
 

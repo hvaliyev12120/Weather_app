@@ -26,7 +26,6 @@ const takeUserInput = function () {
 
     const cord_value = search_input.value;
     splitted_cord_value = cord_value.split(" ");
-    // console.log(splitted_cord_value);
     cordFunc(splitted_cord_value[0], splitted_cord_value[1]);
 
     getCityCurrentWeather(city);
